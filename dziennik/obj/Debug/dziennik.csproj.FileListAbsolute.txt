@@ -1,0 +1,17 @@
+C:\Users\student\source\repos\dziennik\dziennik\bin\Debug\dziennik.exe.config
+C:\Users\student\source\repos\dziennik\dziennik\bin\Debug\dziennik.exe
+C:\Users\student\source\repos\dziennik\dziennik\bin\Debug\dziennik.pdb
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik.csproj.AssemblyReference.cache
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\MainWindow.g.cs
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\App.g.cs
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik_MarkupCompile.cache
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik_MarkupCompile.lref
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\MainWindow.baml
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik.g.resources
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik.Properties.Resources.resources
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik.csproj.GenerateResource.cache
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik.csproj.CoreCompileInputs.cache
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik.exe
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\dziennik.pdb
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\Windows\StartUpWindow.g.cs
+C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\Windows\StartUpWindow.baml
