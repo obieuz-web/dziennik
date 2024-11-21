@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Collections;
 using System.Windows;
 using dziennik.Class;
+using Dapper;
+using System.Windows.Controls;
 
 namespace dziennik.Services
 {
@@ -20,34 +22,7 @@ namespace dziennik.Services
             
             connection = new SqlConnection(connectionString);
         }
-        public List<Student> getStudents()
-        {
-            if(!DoesConnected())
-            {
-                return null;
-            }
-
-            string query = "SELECT imie,nazwisko,klasa FROM uczniowie";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            SqlDataReader reader = command.ExecuteReader();
-
-            List<Student> students = new List<Student>();
-
-            while (reader.Read())
-            {
-                students.Add(new Student { Imie = (string)reader["imie"], Nazwisko = (string)reader["nazwisko"], klasa = (string)reader["klasa"] });
-            }
-
-            // Zamknięcie SqlDataReader
-            reader.Close();
-
-            connection.Close();
-
-            return students;
-        }
-        public string Login(int pesel, string password)
+        public string GetType(int pesel, string password)
         {
             if (!DoesConnected())
             {
@@ -81,12 +56,65 @@ namespace dziennik.Services
 
             return "";
         }
+        public Student GetStudentData(int pesel)
+        {
+            if(!DoesConnected())
+            {
+                return null;
+            }
+            string query = "SELECT * FROM uczniowie WHERE pesel = @pesel;";
+
+            Student student = connection.Query<Student>(query,new { pesel }).First();
+
+            string query_grades = "SELECT Id_ucznia, ocena, Id_przedmiotu, nazwa FROM oceny JOIN przedmioty ON oceny.Id_przedmiotu = przedmioty.Id WHERE Id_ucznia = @pesel;";
+
+            var grades = connection.Query<Grade>(query_grades, new { pesel});
+
+            student.oceny = new List<Grade>(grades);
+
+            connection.Close();
+
+            return student;
+
+        }
+        public IEnumerable<Student> GetStudentsFromClass(int id_nauczyciela)
+        {
+            if (!DoesConnected())
+            {
+                return null;
+            }
+
+            string query_find_class = "SELECT Id from klasy WHERE wychowawca = @id_nauczyciela";
+
+            string klasa = connection.Query<string>(query_find_class, new { id_nauczyciela }).First();
+
+            string query = "SELECT * FROM uczniowie WHERE klasa = @klasa";
+
+            IEnumerable<Student> students = connection.Query<Student>(query, new { klasa });
+
+            connection.Close();
+
+            return students;
+        }
+        public Teacher GetTeacherData(int pesel, string password)
+        {
+            if (!DoesConnected())
+            {
+                return null;
+            }
+            string query = "SELECT * FROM Nauczyciele WHERE pesel = @pesel AND haslo = @password;";
+
+            Teacher teacher = connection.Query<Teacher>(query, new { pesel, password }).First();
+
+            connection.Close();
+
+            return teacher;
+        }
         private bool DoesConnected()
         {
             try
             {
                 connection.Open();
-                MessageBox.Show("Połączenie udane!");
                 return true;
             }
             catch (Exception ex)

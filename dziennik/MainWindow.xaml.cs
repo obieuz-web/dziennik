@@ -28,50 +28,29 @@ namespace dziennik
         {
             InitializeComponent();
             databaseService = new databaseService();
-
-            //List<Student> students = databaseService.getStudents();
-
-            //CreateStudentTree(students);
-
-            MessageBox.Show(databaseService.Login(2137,"123"));
-        }
-        private void CreateStudentTree(List<Student> students)
-        {
-
-            students.GroupBy(s => s.klasa).ToList().ForEach(group =>
-            {
-                TreeViewItem klasa = new TreeViewItem { Header=group.Key };
-
-                foreach (var item in group)
-                {
-                    klasa.Items.Add(new TreeViewItem { Header = item.Imie + " " + item.Nazwisko });
-                }
-                //_treeView.Items.Add(klasa);
-            });
-           
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GetType(object sender, RoutedEventArgs e)
         {
-            StartUpWindow startUpWindow = new StartUpWindow();
-            startUpWindow.Show();
+            string typ = databaseService.GetType(int.Parse(pesel.Text), haslo.Text);
 
-            this.Close();
-
-            string typ = databaseService.Login(int.Parse(pesel.Text), haslo.Text);
-
-            if (typ == "u")
-            {
-                MessageBox.Show("Witaj uczniu");
-            }
-            else if(typ == "n")
-            {
-                MessageBox.Show("Witaj szanowny nauczycielu");
-            }
-            else
+            if (typ == "")
             {
                 MessageBox.Show("Za szybko");
+                return;
             }
+
+            if(typ == "n")
+            {
+                TeacherWindow teacherWindow = new TeacherWindow(int.Parse(pesel.Text), haslo.Text);
+                teacherWindow.Show();
+                this.Close();
+                return;
+            }
+
+            StudentWindow studentWindow = new StudentWindow(int.Parse(pesel.Text), haslo.Text);
+            studentWindow.Show();
+            this.Close();
         }
     }
 }
