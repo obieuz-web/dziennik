@@ -5,30 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dziennik.Windows"
         mc:Ignorable="d"
-        Title="StudentWindow" Height="450" Width="800">
-    <Grid Margin="50">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        Background="LightSteelBlue"
+        Title="Witaj Studencie!" Height="450" Width="800">
+    <Border Background="LavenderBlush" Margin="50" Padding="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Imię i Nazwisko" Margin="0,0,10,0"/>
-        <TextBlock Name="_textblock_imie_nazwisko" Grid.Column="1" />
+            <TextBlock Text="Imię i Nazwisko" Margin="0,0,10,0"/>
+            <TextBlock Name="_textblock_imie_nazwisko" Grid.Column="1" />
 
-        <TextBlock Text="PESEL" Grid.Row="1" Margin="0,0,10,0"/>
-        <TextBlock Name="_textblock_pesel" Grid.Column="1"  Grid.Row="1" />
+            <TextBlock Text="PESEL" Grid.Row="1" Margin="0,0,10,0"/>
+            <TextBlock Name="_textblock_pesel" Grid.Column="1"  Grid.Row="1" />
 
-        <TextBlock Text="Ilość punktów" Grid.Row="2" Margin="0,0,10,0"/>
-        <TextBlock Name="_textblock_punkty" Grid.Column="1"  Grid.Row="2" />
+            <TextBlock Text="Ilość punktów" Grid.Row="2" Margin="0,0,10,0"/>
+            <TextBlock Name="_textblock_punkty" Grid.Column="1"  Grid.Row="2" />
 
-        <TextBlock Text="Oceny" Grid.Row="3" Grid.Column="0"/>
-        <TreeView Name="_treeView_oceny" Grid.Row="3" Grid.Column="1"/>
+            <TextBlock Text="Oceny" Grid.Row="3" Grid.Column="0"/>
+            <TreeView Name="_treeView_oceny" Grid.Row="3" Grid.Column="1"/>
 
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

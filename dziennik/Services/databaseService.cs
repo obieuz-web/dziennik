@@ -9,6 +9,7 @@ using System.Windows;
 using dziennik.Class;
 using Dapper;
 using System.Windows.Controls;
+using System.Diagnostics;
 
 namespace dziennik.Services
 {
@@ -110,6 +111,90 @@ namespace dziennik.Services
 
             return teacher;
         }
+
+        public void AddPoints(int pesel, int punkty)
+        {
+            if (!DoesConnected())
+            {
+                return;
+            }
+
+            string query = "SELECT punkty FROM uczniowie WHERE PESEL = @pesel;";
+
+            int points = connection.Query<int>(query, new { pesel }).First();
+
+            points += punkty;
+
+            string query_grades = "UPDATE uczniowie SET punkty = @points WHERE PESEL = @pesel";
+
+            connection.Execute(query_grades, new { points, pesel });
+
+            connection.Close();
+        }
+        public IEnumerable<string> getSubjects()
+        {
+            if (!DoesConnected())
+            {
+                return null;
+            }
+
+            string query = "SELECT nazwa FROM przedmioty;";
+
+            IEnumerable<string> przedmioty = connection.Query<string>(query);
+
+            connection.Close();
+
+            return przedmioty;
+        }
+        public IEnumerable<Student> GetStudents()
+        {
+            if (!DoesConnected())
+            { return null; }
+
+            string query = "SELECT * FROM uczniowie;";
+
+            IEnumerable<Student> students = connection.Query<Student>(query);
+
+            connection.Close();
+
+            return students;
+        }
+
+        public void AddGrade(int grade, string przedmiot, int pesel)
+        {
+            if (!DoesConnected())
+            {
+                return;
+            }
+
+            string query = "SELECT Id FROM przedmioty WHERE nazwa = @przedmiot;";
+
+            int id_przedmiotu = connection.Query<int>(query, new {przedmiot}).First();
+
+            string query_1 = "INSERT INTO oceny (Id_ucznia,ocena,Id_przedmiotu) VALUES(@pesel,@grade,@id_przedmiotu)";
+
+            connection.Execute(query_1, new { pesel, grade, id_przedmiotu });
+
+            connection.Close();
+
+            return;
+        }
+        public IEnumerable<string> GetKlasy()
+        {
+            if (!DoesConnected())
+            {
+                return null;
+            }
+
+            string query = "SELECT DISTINCT klasa FROM uczniowie;";
+
+            IEnumerable<string> klasy = connection.Query<string>(query);
+
+            connection.Close();
+
+            return klasy;
+        }
+
         private bool DoesConnected()
         {
             try
@@ -122,6 +207,22 @@ namespace dziennik.Services
                 MessageBox.Show($"Błąd połączenia: {ex.Message}");
                 return false;
             }
+        }
+
+        public void AddStudent(string imie, string nazwisko, string klasa, string haslo)
+        {
+            if (!DoesConnected())
+            {
+                return;
+            }
+
+            string query = "INSERT INTO uczniowie VALUES (@imie,@nazwisko,@haslo,250,@klasa);";
+
+            connection.Execute(query, new {imie,nazwisko,haslo,klasa});
+
+            connection.Close();
+
+            return;
         }
 
 

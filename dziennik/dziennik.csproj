@@ -63,6 +63,18 @@
     <Compile Include="Class\Student.cs" />
     <Compile Include="Class\Teacher.cs" />
     <Compile Include="Services\databaseService.cs" />
+    <Compile Include="Windows\DirectorWindow.xaml.cs">
+      <DependentUpon>DirectorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Forms\AddStudentForm.xaml.cs">
+      <DependentUpon>AddStudentForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Forms\AppGradeForm.xaml.cs">
+      <DependentUpon>AppGradeForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Forms\AppPointsForm.xaml.cs">
+      <DependentUpon>AppPointsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\StudentWindow.xaml.cs">
       <DependentUpon>StudentWindow.xaml</DependentUpon>
     </Compile>
@@ -81,6 +93,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\DirectorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Forms\AddStudentForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Forms\AppGradeForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Forms\AppPointsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\StudentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

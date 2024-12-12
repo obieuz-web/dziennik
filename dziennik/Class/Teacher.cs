@@ -14,6 +14,8 @@ namespace dziennik.Class
         public string password {  get; set; }
         public string sala {  get; set; }
 
+        public bool czy_dyrektor { get; set; }
+
         public Teacher() { }
     }
 }

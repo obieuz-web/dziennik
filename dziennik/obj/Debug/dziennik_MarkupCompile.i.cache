@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\student\source\repos\dziennik\dziennik\obj\Debug\
+C:\Users\student\Source\Repos\dziennik_moj\dziennik\obj\Debug\
 dziennik
 none
 false
 DEBUG;TRACE
-C:\Users\student\source\repos\dziennik\dziennik\App.xaml
-2453121567
+C:\Users\student\Source\Repos\dziennik_moj\dziennik\App.xaml
+7-994853211
 
-9-1403791472
-13-1310406943
-MainWindow.xaml;Windows\StartUpWindow.xaml;
+17-1641720771
+141499180435
+MainWindow.xaml;Windows\DirectorWindow.xaml;Windows\Forms\AddStudentForm.xaml;Windows\Forms\AppGradeForm.xaml;Windows\Forms\AppPointsForm.xaml;Windows\StudentWindow.xaml;Windows\TeacherWindow.xaml;
 
 True
 

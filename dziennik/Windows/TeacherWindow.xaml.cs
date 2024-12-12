@@ -1,5 +1,6 @@
 ﻿using dziennik.Class;
 using dziennik.Services;
+using dziennik.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace dziennik.Windows
     {
         private Teacher dane;
         private databaseService _databaseService { get; set; } = new databaseService();
+        private Student current_student { get; set; }
         public TeacherWindow(int pesel, string password)
         {
             InitializeComponent();
@@ -32,7 +34,6 @@ namespace dziennik.Windows
             LoadClass(dane.PESEL);
 
             _listBox_uczniowie.SelectionChanged += LoadStudent;
-
         }
         private void LoadClass(int id)
         {
@@ -53,7 +54,14 @@ namespace dziennik.Windows
 
             ListBoxItem itemBox = (ListBoxItem)_listBox_uczniowie.SelectedItem;
 
-            Student student = _databaseService.GetStudentData((int)itemBox.Tag);
+            LoadStudentData((int)itemBox.Tag);
+        }
+
+        private void LoadStudentData(int pesel)
+        {
+            Student student = _databaseService.GetStudentData(pesel);
+
+            current_student = student;
 
             _textblock_imie_nazwisko.Text = student.imie + " " + student.nazwisko;
 
@@ -77,5 +85,32 @@ namespace dziennik.Windows
             });
         }
 
+        private void Add_Points_Button(object sender, RoutedEventArgs e)
+        {
+            if(!int.TryParse(_textblock_pesel.Text, out _))
+            {
+                return;
+            }
+            int pesel = int.Parse(_textblock_pesel.Text);
+            AppPointsForm appPointsForm = new AppPointsForm(pesel);
+            appPointsForm.ShowDialog();
+
+            LoadStudentData(pesel);
+            MessageBox.Show("Zaktualizowano punkty");
+        }
+
+        private void Add_Grade_Button(object sender, RoutedEventArgs e)
+        {
+            if (!int.TryParse(_textblock_pesel.Text, out _))
+            {
+                return;
+            }
+            int pesel = int.Parse(_textblock_pesel.Text);
+            AppGradeForm appGradeForm = new AppGradeForm(pesel);
+            appGradeForm.ShowDialog();
+
+            LoadStudentData(pesel);
+            MessageBox.Show("Dodano ocene");
+        }
     }
 }

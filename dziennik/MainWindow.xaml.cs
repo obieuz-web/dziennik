@@ -42,6 +42,15 @@ namespace dziennik
 
             if(typ == "n")
             {
+                Teacher teacher = databaseService.GetTeacherData(int.Parse(pesel.Text), haslo.Text);
+
+                if (teacher.czy_dyrektor)
+                {
+                    DirectorWindow directorWindow = new DirectorWindow(int.Parse(pesel.Text), haslo.Text);
+                    directorWindow.Show();
+                    this.Close();
+                    return;
+                }
                 TeacherWindow teacherWindow = new TeacherWindow(int.Parse(pesel.Text), haslo.Text);
                 teacherWindow.Show();
                 this.Close();

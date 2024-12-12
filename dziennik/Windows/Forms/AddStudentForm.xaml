@@ -1,0 +1,39 @@
+﻿<Window x:Class="dziennik.Windows.Forms.AddStudentForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dziennik.Windows.Forms"
+        mc:Ignorable="d"
+        Background="LightSteelBlue"
+        Title="Dodaj studenta!!" Height="300" Width="600">
+    <Border Margin="50" Padding="15" Background="LavenderBlush">
+        <Grid VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Podaj imie"/>
+            <TextBox Name="imie" Grid.Column="1"/>
+
+            <TextBlock Text="Podaj nazwisko" Grid.Row="1"/>
+            <TextBox Name="nazwisko" Grid.Column="1" Grid.Row="1"/>
+
+            <TextBlock Text="Podaj haslo" Grid.Row="2"/>
+            <TextBox Name="haslo" Grid.Column="1" Grid.Row="2"/>
+
+            <TextBlock Text="Podaj klase" Grid.Row="3"/>
+            <ComboBox Name="klasa" Grid.Row="3" Grid.Column="1"/>
+
+            <Button Grid.Row="4" Grid.ColumnSpan="2" Width="100" Height="30" Content="Dodaj studenta" Margin="10" Click="Button_Click"/>
+        </Grid>
+    </Border>
+</Window>
