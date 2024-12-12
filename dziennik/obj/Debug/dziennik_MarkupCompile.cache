@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\student\Source\Repos\dziennik_moj\dziennik\obj\Debug\
+C:\Users\robiz\Source\Repos\dziennik\dziennik\obj\Debug\
 dziennik
 none
 false
 DEBUG;TRACE
-C:\Users\student\Source\Repos\dziennik_moj\dziennik\App.xaml
+C:\Users\robiz\Source\Repos\dziennik\dziennik\App.xaml
 7-994853211
 
 16440367847
-141499180435
+14239543177
 MainWindow.xaml;Windows\DirectorWindow.xaml;Windows\Forms\AddStudentForm.xaml;Windows\Forms\AppGradeForm.xaml;Windows\Forms\AppPointsForm.xaml;Windows\StudentWindow.xaml;Windows\TeacherWindow.xaml;
 
 False
